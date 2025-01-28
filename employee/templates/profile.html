@@ -1,0 +1,100 @@
+{% extends 'emp_base.html' %}
+{% block content %}
+
+<div class="card shadow m-4">
+    <div class="card-body">
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange;">Profile</h5>
+        <div class="container-fluid">
+            <form action="" method="post" name="signup">
+                {% csrf_token %}
+                <div class="form-row">
+                    <!-- First Name and Last Name -->
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="firstname" class="form-control" placeholder="Enter Your First Name" pattern="[A-Za-z]+" value="{{employee.user.first_name}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" name="lastname" class="form-control" placeholder="Enter Your Last Name" pattern="[A-Za-z]+" value="{{employee.user.last_name}}">
+                        </div>
+                    </div>
+                    <!-- Employee Code and Department -->
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="empcode">Employee Code</label>
+                            <input type="text" name="empcode" class="form-control" placeholder="Enter your Employee code" pattern="[0-9]+" value="{{employee.empcode}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="empdept">Employee Department</label>
+                            <input type="text" name="department" class="form-control" placeholder="Department" value="{{employee.empdept}}">
+                        </div>
+                    </div>
+                    <!-- Employee Designation and Contact -->
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label>Employee Designation</label>
+                            <input type="text" name="designation" class="form-control" placeholder="Designation" value="{{employee.designation}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="contact">Contact</label>
+                            <input type="text" name="contact" class="form-control" placeholder="Contact number" value="{{employee.contact}}">
+                        </div>
+                    </div>
+                    <!-- Email and Joining Date -->
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" class="form-control" placeholder="Email Id" value="{{employee.user.username}}">
+                        </div>
+                    </div>
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="jdate">Joining Date [{{ employee.joiningDate|date:"d/m/Y" }}]</label>
+                            <input type="date" name="jdate" class="form-control" value="{{ employee.joiningDate|date:"Y-m-d" }}">
+                        </div>
+                    </div>
+                    <!-- Gender Selection -->
+                    <div class="col-sm-6 mb-3">
+                        <div class="form-group">
+                            <label for="gender">Gender [{{ employee.gender }}]</label>
+                            <select name="gender" class="form-control">
+                                <option value="None" {% if employee.gender == 'None' %}selected{% endif %}>Select Gender</option>
+                                <option value="Male" {% if employee.gender == 'Male' %}selected{% endif %}>Male</option>
+                                <option value="Female" {% if employee.gender == 'Female' %}selected{% endif %}>Female</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-row">
+                    <div class="col-12">
+                        <button type="submit" name="submit" class="btn btn-primary w-100">Update Profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+  <script>
+     alert("Profile updated successfully!");
+  </script>
+{% endif %}  
+
+{% if error == "yes" %}
+  <script>
+      alert("Something went wrong");
+      window.location = "{% url 'profile' %}";
+  </script>
+{% endif %}
+
+{% endblock %}

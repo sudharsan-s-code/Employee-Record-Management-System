@@ -1,0 +1,63 @@
+/* Navbar Links - Default and Hover Styles */
+.nav-link {
+    color: white !important;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #fff !important;
+    background-color: #f39c12; /* Golden yellow on hover */
+    border-radius: 30px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Navbar Brand (Logo) */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 20px;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+    color: #f39c12 !important; /* Golden hover effect for the brand */
+}
+
+/* Active State for Navbar Items */
+.navbar-nav .nav-item.active .nav-link {
+    color: #fff !important;
+    background-color: #c0392b !important; /* Active item background color */
+    border-radius: 30px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar - Background and Box Shadow */
+.navbar {
+    background-color: #2c3e50; /* Darker background for the navbar */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+/* Responsive Navbar Menu */
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+/* Enhancing the Navbar on Larger Screens */
+@media (min-width: 992px) {
+    .navbar-nav .nav-item {
+        margin-right: 20px;
+    }
+}
+
+/* Navbar link focus states (for accessibility) */
+.nav-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(243, 156, 18, 0.8); /* Golden outline when focused */
+}

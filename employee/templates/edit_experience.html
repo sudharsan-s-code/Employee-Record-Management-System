@@ -1,0 +1,106 @@
+{% extends 'emp_base.html' %}
+{% block content %}
+
+<div class="card shadow m-2">
+    <div class="card-body">
+        <!-- Button to View Experience -->
+        <a href="{% url 'myexperience' %}" class="btn btn-primary float-right btn-sm mb-3">View My Experience</a>
+        
+        <h5 class="p-2 text-danger" style="border-bottom: 2px solid orange">Edit Work Experience</h5>
+        
+        <div class="container-fluid">
+            <form action="" method="post">
+                {% csrf_token %}
+                
+                <div class="row">
+                    <!-- First Company -->
+                    <div class="col-md-6 mb-3">
+                        <label for="company1name" class="form-label">First Company Name</label>
+                        <input type="text" name="company1name" class="form-control" value="{{ experience.company1name }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny1desig" class="form-label">First Job Designation</label>
+                        <input type="text" name="comapny1desig" class="form-control" value="{{ experience.comapny1desig }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="company1salary" class="form-label">First Job Salary</label>
+                        <input type="text" name="company1salary" class="form-control" value="{{ experience.company1salary }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny1duration" class="form-label">First Job Duration</label>
+                        <input type="text" name="comapny1duration" class="form-control" value="{{ experience.comapny1duration }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Second Company -->
+                    <div class="col-md-6 mb-3">
+                        <label for="company2name" class="form-label">Second Company Name</label>
+                        <input type="text" name="company2name" class="form-control" value="{{ experience.company2name }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny2desig" class="form-label">Second Job Designation</label>
+                        <input type="text" name="comapny2desig" class="form-control" value="{{ experience.comapny2desig }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="company2salary" class="form-label">Second Job Salary</label>
+                        <input type="text" name="company2salary" class="form-control" value="{{ experience.company2salary }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny2duration" class="form-label">Second Job Duration</label>
+                        <input type="text" name="comapny2duration" class="form-control" value="{{ experience.comapny2duration }}">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Third Company -->
+                    <div class="col-md-6 mb-3">
+                        <label for="company3name" class="form-label">Third Company Name</label>
+                        <input type="text" name="company3name" class="form-control" value="{{ experience.company3name }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny3desig" class="form-label">Third Job Designation</label>
+                        <input type="text" name="comapny3desig" class="form-control" value="{{ experience.comapny3desig }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="company3salary" class="form-label">Third Job Salary</label>
+                        <input type="text" name="company3salary" class="form-control" value="{{ experience.company3salary }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="comapny3duration" class="form-label">Third Job Duration</label>
+                        <input type="text" name="comapny3duration" class="form-control" value="{{ experience.comapny3duration }}">
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center">
+                    <input type="submit" value="Submit" class="btn btn-warning form-control w-50 mx-auto">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% if error == "no" %}
+  <script>
+     alert("Experience updated successfully!");
+  </script>
+{% endif %}  
+
+{% if error == "yes" %}
+  <script>
+      alert("Something went wrong");
+      window.location = "{% url 'edit_experience' %}";
+  </script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Employee Dashboard</title>
+  {% load static %}
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+
+  <!-- Bootstrap 4.6.2 CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+
+  <!-- jQuery & Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    /* Sidebar Customization */
+ /* Custom Active Link Styles */
+.sidebar .list-group-item.active {
+  background-color: #007bff;  /* Blue background for active item */
+  color: #f8f9fa;  /* Very light gray for text when active */
+  border: none;  /* Removes border on active item */
+}
+
+/* Icon and text color changes for active items */
+.sidebar .list-group-item.active i {
+  color: #f8f9fa;  /* Light color for icons when active */
+}
+
+/* Styling for when hovering over the inactive links */
+.sidebar .list-group-item:hover {
+  background-color: #f8f9fa;  /* Light background color on hover */
+  color: #007bff;  /* Text color changes to blue on hover */
+}
+
+/* Styling for inactive links */
+.sidebar .list-group-item {
+  color: #495057;  /* Default dark color for text */
+  background-color: #fff; /* White background by default */
+}
+
+/* Optional: if you want to reduce the text color for unclicked links */
+.sidebar .list-group-item-action {
+  border-left: 3px solid transparent;  /* Make a clean left border when unclicked */
+}
+
+.sidebar .list-group-item-action:hover {
+  border-left: 3px solid #007bff; /* Border color on hover */
+}
+
+
+    /* Main Content */
+    .main-content {
+      margin-left: 125px;
+    }
+
+    .card-shadow {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .page-header {
+      border-bottom: 2px solid #28a745;
+      padding: 10px;
+      text-align: center;
+    }
+    
+    /* Make the card body content scrollable */
+    .card-body {
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .list-group-item {
+      padding: 10px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="d-flex">
+    <!-- Sidebar -->
+    <div class="sidebar col-sm-2 p-0">
+      <center><img src="{% static 'images/icon.png' %}" width="100" height="100" /></center>
+      <div class="list-group">
+          <a href="{% url 'emp_home'%}" class="list-group-item list-group-item-action {% if request.path == '/emp_home/' %} active {% endif %}">
+            <i class="fas fa-tachometer-alt"></i> Dashboard
+          </a>
+          <a href="{% url 'profile'%}" class="list-group-item list-group-item-action {% if request.path == '/profile/' %} active {% endif %}">
+            <i class="fas fa-user"></i> Profile
+          </a>
+          <a href="{% url 'myexperience'%}" class="list-group-item list-group-item-action {% if request.path == '/myexperience/' %} active {% endif %}">
+            <i class="fas fa-briefcase"></i> My Experience
+          </a>
+          <a href="{% url 'edit_experience'%}" class="list-group-item list-group-item-action {% if request.path == '/edit_experience/' %} active {% endif %}">
+            <i class="fas fa-edit"></i> Edit My Experience
+          </a>
+          <a href="{% url 'my_education'%}" class="list-group-item list-group-item-action {% if request.path == '/my_education/' %} active {% endif %}">
+            <i class="fas fa-graduation-cap"></i> My Education
+          </a>
+          <a href="{% url 'edit_my_education'%}" class="list-group-item list-group-item-action {% if request.path == '/edit_my_education/' %} active {% endif %}">
+            <i class="fas fa-edit"></i> Edit My Education
+          </a>
+          <a href="{% url 'change_password'%}" class="list-group-item list-group-item-action {% if request.path == '/change_password/' %} active {% endif %}">
+            <i class="fas fa-lock"></i> Change Password
+          </a>
+          <a href="{% url 'logout' %}" class="list-group-item list-group-item-action">
+            <i class="fas fa-sign-out-alt"></i> Log out
+          </a>
+      </div>
+  </div>
+  
+  
+
+    <!-- Main Content Area -->
+    <div class="main-content col-sm-8 p-0">
+      <div class="container-fluid p-2">
+        <h5 class="page-header font-weight-bold">
+          Employee Record Management System
+        </h5>
+      </div>
+          {% block content %}
+          {% endblock %}
+    
+  </div>
+
+</body>
+
+</html>

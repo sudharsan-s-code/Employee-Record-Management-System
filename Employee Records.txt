@@ -1,0 +1,7 @@
+ Email: john.doe@example.com, Password: password123,
+ Email: jane.smith@example.com, Password: secretpass, 
+Email: alex.johnson@example.com, Password: 123abc, 
+, Email: emma.brown@example.com, Password: emma2025, 
+ Email: michael.williams@example.com, Password: passw0rd,
+ Email: sophia.lee@example.com, Password: summer2025,
+, Email: daniel.harris@example.com, Password: dany2025,

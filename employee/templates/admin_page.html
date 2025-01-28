@@ -1,0 +1,32 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+<h3 class="text-center">Employee Login Logs</h3>
+
+<table class="table table-bordered">
+    <thead class="bg-dark text-light">
+        <tr>
+            <th>Employee</th>
+            <th>Login Time</th>
+            <th>Logout Time</th>
+            <th>Total Time</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.employee.first_name }} {{ log.employee.last_name }}</td>
+            <td>{{ log.login_time }}</td>
+            <td>{{ log.logout_time }}</td>
+            <td>
+                {% if log.total_time %}
+                    {{ log.total_time }}
+                {% else %}
+                    Still Logged In
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

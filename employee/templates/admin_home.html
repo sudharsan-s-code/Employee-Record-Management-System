@@ -1,0 +1,18 @@
+{% extends 'admin_base.html' %}
+{% block content %}
+  <h5 class="text-danger p-2" style="border-bottom: 2px solid orange;">Employee Dashboard</h5>
+
+  <div class="row justify-content-center text-center">
+    <div class="col-md-6 col-lg-4 p-2">
+      <div class="card card-shadow">
+        <div class="card-body">
+          <h4 class="text-success mb-3">Welcome Back to ERMS</h4>
+          <h5 class="text-capitalize mb-4">Admin</h5>
+          <p class="text-muted">You have full access to manage employee records. Select an option from the sidebar to get started.</p>
+          <a href="{% url 'all_employee' %}" class="btn btn-warning btn-block">View Employees</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
